@@ -41,16 +41,16 @@ function searchArtist(queryStr) {
         results = artists;
         hasResults = true;
     } else if (queryStr.toLowerCase().includes("high") && queryStr.toLowerCase().includes("rank")) {
-        results = artists.sort(sortByRankDescending);
+        results = artists.sort(sortByRankAscending); // highest rank (1) gets shown first
         hasResults = true;
     } else if (queryStr.toLowerCase().includes("low") && queryStr.toLowerCase().includes("rank")) {
-        results = artists.sort(sortByRankAscending);
+        results = artists.sort(sortByRankDescending); // lowest rank (20) gets shown last
         hasResults = true;
     } else if (queryStr.toLowerCase().includes("high") && queryStr.toLowerCase().includes("listen")) {
-        results = artists.sort(sortByListenersDescending);
+        results = artists.sort(sortByListenersDescending); // top listeners gets shown first
         hasResults = true;
     } else if (queryStr.toLowerCase().includes("low") && queryStr.toLowerCase().includes("listen")) {
-        results = artists.sort(sortByListenersAscending);
+        results = artists.sort(sortByListenersAscending); // lowest listeners gets shown last
         hasResults = true;
     } else {
         // iterate over artists and push matching artists onto the results array
