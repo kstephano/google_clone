@@ -1,35 +1,33 @@
 const allPagesButton = document.querySelector('#all-pages-button');
 const randomPageButton = document.querySelector('#random-page-button');
+const textInput = document.querySelector('input');
 
 initListeners();
 
 function getSearchInput () {
-    const textInput = document.querySelector('input').value;
-    return textInput;
+    return textInput.value;
 }
 
 function initListeners() {
-    allPagesButton.addEventListener('click', search);
+    allPagesButton.addEventListener('click', e => search(e));
     randomPageButton.addEventListener('click', randomSearch);
 }
 
 
 function search(){
-    let input = getSearchInput();
-    console.log(query)
+    e.preventDefault();
+    const input = getSearchInput();
+    console.log(input)
 
     // if text exists
     if (input) {
-        if (input.toLowerCase() == "artists") {
-            searchAllArtists()
-        } else {
-            searchForArtist()
-        }
+        fetchQuery();
+    } else {
+        // do something
     }
 }
 
-async function fetchQuery(e) {
-    e.preventDefault();
+async function fetchQuery() {
     const response = await fetch(`http://localhost:3000/artists/query${getSearchInput()}`);
     const data = await response.json();
 
