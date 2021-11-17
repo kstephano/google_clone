@@ -26,18 +26,4 @@ app.get('/query/:query', (req, res) => {
     }
 });
 
-app.post('/query/:query', (req, res) => {
-    const results = helpers.searchArtist(req.params.results);
-    try {
-        if (results != null) {
-            res.status(201).send(results);
-        } else {
-            res.status(404).send({ message: `Couldn't POST results with search query: ${req.params.query }`});
-        }
-    } catch(e) {
-        console.log(e);
-        res.status(404).send({ message: `Couldn't POST results with search query: ${req.params.query }`});
-    }
-});
-
 module.exports = app;
