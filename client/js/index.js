@@ -37,14 +37,16 @@ async function fetchQuery() {
 }
 
 function randomSearch(){
-    let luckyText = getSearchInput()
-    console.log(luckyText)
+    const luckyText = getSearchInput()
+
     if (luckyText) {
         if (luckyText.toLowerCase() == "artists") {
             getRandomArtist()
         } else {
             getArtistWiki(luckyText)
         }
+    } else {
+        getRandomArtist();
     }
 }
 
