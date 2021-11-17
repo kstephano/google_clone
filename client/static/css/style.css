@@ -42,6 +42,7 @@ button {
     padding: 10px 25px 10px 25px;
     border-radius: 8px;
     border: none;
+    box-sizing: border-box;
 }
 
 #sign-in {
@@ -70,7 +71,7 @@ main > * {
 }
 
 #all-pages-button:hover, #random-page-button:hover {
-    border: solid #dddddd 1px
+    box-shadow: 0 0 0 2px #d0d0d0;
 }
 
 input {
