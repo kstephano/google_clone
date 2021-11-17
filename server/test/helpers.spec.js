@@ -36,12 +36,12 @@ describe('searchArtist', () => {
     it('should return a list containing the correct artist given the exact name', () => {
         const results = helpers.searchArtist("Justin Bieber");
         expect(results[0]).toEqual(artists[0]);
-    });
+    })
 
     it('should return a list containing the correct artist given part of the name', () => {
         const results = helpers.searchArtist("Bieber");
         expect(results[0]).toEqual(artists[0]);
-    });
+    })
 
     it('should return a list containing artists with "er" in their name', () => {
         const results = helpers.searchArtist("er");
@@ -49,10 +49,42 @@ describe('searchArtist', () => {
             { rank: 1, name: "Justin Bieber", monthlyListenersInMillions: 82.27, wikiUrl: "https://en.wikipedia.org/wiki/Justin_Bieber" },
             { rank: 2, name: "Ed Sheeran", monthlyListenersInMillions: 79.30, wikiUrl: "https://en.wikipedia.org/wiki/Ed_Sheeran" },
         ]);
-    });
+    })
 
     it("should return null when the query doesn't match any artists", () => {
         const results = helpers.searchArtist("empty");
         expect(results).toEqual(null);
-    });
+    })
+
+    it("should return a list of artists by rank in descending order when given the criteria 'high' 'rank'", () => {
+        const results = helpers.searchArtist("highrank");
+        const sortedArtists = artists.sort(helpers.sortByListenersDescending);
+        expect(results).toEqual(sortedArtists);
+        expect(results[0]).toEqual(sortedArtists[0]);
+        expect(results[results.length - 1]).toEqual(sortedArtists[results.length - 1]);
+    })
+
+    it("should return a list of artists by rank in ascending order when given the criteria 'low' 'rank'", () => {
+        const results = helpers.searchArtist("lowrank");
+        const sortedArtists = artists.sort(helpers.sortByRankAscending);
+        expect(results).toEqual(sortedArtists);
+        expect(results[0]).toEqual(sortedArtists[0]);
+        expect(results[results.length - 1]).toEqual(sortedArtists[results.length - 1]);
+    })
+
+    it("should return a list of artists by monthly listeners in descending order when given the criteria 'high' 'listen'", () => {
+        const results = helpers.searchArtist("highlisteners");
+        const sortedArtists = artists.sort(helpers.sortByListenersDescending)
+        expect(results).toEqual(sortedArtists);
+        expect(results[0]).toEqual(sortedArtists[0]);
+        expect(results[results.length - 1]).toEqual(sortedArtists[results.length - 1]);
+    })
+
+    it("should return a list of artists by monthly listeners in ascending order when given the criteria 'low' 'listen'", () => {
+        const results = helpers.searchArtist("lowlisteners");
+        const sortedArtists = artists.sort(helpers.sortByListenersAscending)
+        expect(results).toEqual(sortedArtists);
+        expect(results[0]).toEqual(sortedArtists[0]);
+        expect(results[results.length - 1]).toEqual(sortedArtists[results.length - 1]);
+    })
 })
