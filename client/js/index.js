@@ -23,7 +23,7 @@ function search(e){
     if (input) {
         // fetchQuery();
         localStorage.setItem("query", input);
-        window.location.href = 'http://127.0.0.1:5500/client/static/html/results.html';
+        window.location.href = './results.html';
     } else {
         // do something
     }
