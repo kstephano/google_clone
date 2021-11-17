@@ -1,5 +1,5 @@
-const allPagesButton = document.querySelector('#all-pages-button')
-const randomPageButton = document.querySelector('#random-page-button')
+const allPagesButton = document.querySelector('#all-pages-button');
+const randomPageButton = document.querySelector('#random-page-button');
 
 initListeners();
 
@@ -9,18 +9,18 @@ function getSearchInput () {
 }
 
 function initListeners() {
-    allPagesButton.addEventListener('click', search)
-    randomPageButton.addEventListener('click', randomSearch)
+    allPagesButton.addEventListener('click', search);
+    randomPageButton.addEventListener('click', randomSearch);
 }
 
 
 function search(){
-    let query = getSearchInput();
+    let input = getSearchInput();
     console.log(query)
 
     // if text exists
-    if (query) {
-        if (query.toLowerCase() == "artists") {
+    if (input) {
+        if (input.toLowerCase() == "artists") {
             searchAllArtists()
         } else {
             searchForArtist()
@@ -34,7 +34,7 @@ async function fetchQuery(e) {
     const data = await response.json();
 
     // todo
-    // window.location.href = 
+    window.location.href = 'http://127.0.0.1:5500/client/static/html/results.html'
 }
 
 function randomSearch(){
