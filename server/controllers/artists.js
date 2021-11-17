@@ -38,11 +38,16 @@ router.get('/:name', (req, res) => {
 
 // Route for retrieving a list of artists that match the query string
 router.get('/query/:query', (req, res) => {
+    const results = helpers.searchArtist(req.params.query);
     try {
-        res.status(200).send(helpers.searchArtist(req.params.query));
+        if (results != null) {
+            res.status(200).send(results);
+        } else {
+            res.status(400).send({ message: `Couldn't GET artists with search query: ${req.params.query}. No artists' names match the given string.`}); 
+        }
     } catch(e) {
         console.log(e);
-        res.status(400).send({ message: `Couldn't GET artists with search query: ${req.params.query}. No artists' names match the given string.`});
+        res.status(400).send({ message: `Couldn't GET artists with search query: ${req.params.query}`});
     }
 });
 
