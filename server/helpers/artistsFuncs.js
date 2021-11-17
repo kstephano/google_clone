@@ -37,14 +37,17 @@ function searchArtist(queryStr) {
     let results = [];
     let hasResults = false;
 
-    if (queryStr.toLowerCase().includes("high") && queryStr.toLowerCase().includes("rank")) {
+    if (queryStr.toLowerCase().includes("artist")) {
+        results = artists;
+        hasResults = true;
+    } else if (queryStr.toLowerCase().includes("high") && queryStr.toLowerCase().includes("rank")) {
         results = artists.sort(sortByRankDescending);
         hasResults = true;
     } else if (queryStr.toLowerCase().includes("low") && queryStr.toLowerCase().includes("rank")) {
         results = artists.sort(sortByRankAscending);
         hasResults = true;
     } else if (queryStr.toLowerCase().includes("high") && queryStr.toLowerCase().includes("listen")) {
-        results = artists.sort(sortByListenersDescending).reverse();
+        results = artists.sort(sortByListenersDescending);
         hasResults = true;
     } else if (queryStr.toLowerCase().includes("low") && queryStr.toLowerCase().includes("listen")) {
         results = artists.sort(sortByListenersAscending);
