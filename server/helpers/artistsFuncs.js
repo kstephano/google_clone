@@ -37,13 +37,14 @@ function searchArtist(queryStr) {
     let results = [];
     let hasResults = false;
 
+    // iterate over artists and push matching artists onto the results array
     artists.forEach(artist => {
         if (artist.name.toLowerCase().includes(queryStr.toLowerCase())) {
             results.push(artist);
             hasResults = true;
         }
     });
-
+    // set results to null if no results were found
     if (hasResults === false) results = null;
     return results;
 }
