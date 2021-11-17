@@ -14,7 +14,7 @@ function initListeners() {
 }
 
 
-function search(){
+function search(e){
     e.preventDefault();
     const input = getSearchInput();
     console.log(input)
@@ -31,6 +31,7 @@ async function fetchQuery() {
     const response = await fetch(`http://localhost:3000/artists/query${getSearchInput()}`);
     const data = await response.json();
 
+    console.log(data);
     // todo
     window.location.href = 'http://127.0.0.1:5500/client/static/html/results.html'
 }
