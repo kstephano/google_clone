@@ -37,20 +37,54 @@ function searchArtist(queryStr) {
     let results = [];
     let hasResults = false;
 
-    // iterate over artists and push matching artists onto the results array
-    artists.forEach(artist => {
-        if (artist.name.toLowerCase().includes(queryStr.toLowerCase())) {
-            results.push(artist);
-            hasResults = true;
-        }
-    });
+    if (queryStr.toLowerCase().includes("high") && queryStr.toLowerCase().includes("rank")) {
+        results = artists.sort(sortByRankDescending);
+        hasResults = true;
+    } else if (queryStr.toLowerCase().includes("low") && queryStr.toLowerCase().includes("rank")) {
+        results = artists.sort(sortByRankAscending);
+        hasResults = true;
+    } else if (queryStr.toLowerCase().includes("high") && queryStr.toLowerCase().includes("listen")) {
+        results = artists.sort(sortByListenersDescending).reverse();
+        hasResults = true;
+    } else if (queryStr.toLowerCase().includes("low") && queryStr.toLowerCase().includes("listen")) {
+        results = artists.sort(sortByListenersAscending);
+        hasResults = true;
+    } else {
+        // iterate over artists and push matching artists onto the results array
+        artists.forEach(artist => {
+            if (artist.name.toLowerCase().includes(queryStr.toLowerCase())) {
+                results.push(artist);
+                hasResults = true;
+            }
+        });
+    }
     // set results to null if no results were found
     if (hasResults === false) results = null;
     return results;
 }
 
+function sortByListenersAscending(artist1, artist2) {
+    return artist1.monthlyListenersInMillions - artist2.monthlyListenersInMillions;
+}
+
+function sortByListenersDescending(artist1, artist2) {
+    return artist1.monthlyListenersInMillions + artist2.monthlyListenersInMillions;
+}
+
+function sortByRankAscending(artist1, artist2) {
+    return artist1.rank - artist2.rank;
+}
+
+function sortByRankDescending(artist1, artist2) {
+    return artist1.rank + artist2.rank;
+}
+
 module.exports = {
     randomIntFromInterval,
     findArtistByName,
-    searchArtist
+    searchArtist,
+    sortByListenersAscending,
+    sortByListenersDescending,
+    sortByRankAscending,
+    sortByRankDescending
 }
