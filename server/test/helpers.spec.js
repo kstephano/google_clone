@@ -69,10 +69,14 @@ describe('sortByRankDescending', () => {
 });
 
 describe('searchArtist', () => {
-    it('should return a list containing the correct artist given the exact name', () => {
+    it('should return a list of artists sorted by relevence (rank/listeners) given the criteria"artist" ', () => {
         // Sort artists array back into original positions to use in test assertions
         artists.sort(helpers.sortByRankAscending);
-        
+
+        const results = helpers.searchArtist("artist");
+        expect(results).toEqual(artists);
+    })
+    it('should return a list containing the correct artist given the exact name', () => {
         const results = helpers.searchArtist("Justin Bieber");
         expect(results[0]).toEqual(artists[0]);
     })
