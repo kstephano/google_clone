@@ -71,7 +71,7 @@ function sortByListenersAscending(artist1, artist2) {
 }
 
 function sortByListenersDescending(artist1, artist2) {
-    return artist1.monthlyListenersInMillions + artist2.monthlyListenersInMillions;
+    return artist2.monthlyListenersInMillions - artist1.monthlyListenersInMillions;
 }
 
 function sortByRankAscending(artist1, artist2) {
@@ -79,7 +79,7 @@ function sortByRankAscending(artist1, artist2) {
 }
 
 function sortByRankDescending(artist1, artist2) {
-    return artist1.rank + artist2.rank;
+    return artist2.rank - artist1.rank;
 }
 
 module.exports = {
