@@ -34,3 +34,10 @@ function randomSearch(){
         }
     }
 }
+
+function getRandomArtist() {
+    fetch('http://localhost:3000/artists/random')
+    .then(r => r.json())
+    .then(data => window.location.href = `${data.wikiUrl}`)
+    .catch(console.warn)
+}
