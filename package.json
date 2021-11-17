@@ -21,17 +21,10 @@
   "homepage": "https://github.com/kstephano/google_clone#readme",
   "dependencies": {
     "cors": "^2.8.5",
-<<<<<<< HEAD
     "express": "^4.17.1"
   },
   "devDependencies": {
     "coverage": "^0.4.1",
-=======
-    "coverage": "^0.4.1",
-    "express": "^4.17.1"
-  },
-  "devDependencies": {
->>>>>>> a260a09b8fbcc14f294662d45d58ba05aad99a01
     "jest": "^27.3.1",
     "nodemon": "^2.0.15",
     "supertest": "^6.1.6"
