@@ -27,16 +27,23 @@ function randomSearch(){
     console.log(luckyText)
     if (luckyText) {
         if (luckyText.toLowerCase() == "artists") {
-            console.log('YES')
             getRandomArtist()
         } else {
-            getArtist()
+            getArtistWiki(luckyText)
         }
     }
 }
 
 function getRandomArtist() {
     fetch('http://localhost:3000/artists/random')
+    .then(r => r.json())
+    .then(data => window.location.href = `${data.wikiUrl}`)
+    .catch(console.warn)
+}
+
+function getArtistWiki(luckyText) {
+    let luckyTextModified = luckyText.replace(/\s/g, '%20');
+    fetch(`http://localhost:3000/artists/${luckyTextModified}`)
     .then(r => r.json())
     .then(data => window.location.href = `${data.wikiUrl}`)
     .catch(console.warn)
