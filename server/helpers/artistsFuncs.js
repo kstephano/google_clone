@@ -39,7 +39,6 @@ function searchArtist(queryStr) {
 
     artists.forEach(artist => {
         if (artist.name.toLowerCase().includes(queryStr.toLowerCase())) {
-            console.log(artist);
             results.push(artist);
             hasResults = true;
         }
