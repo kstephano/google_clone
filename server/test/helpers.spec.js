@@ -36,7 +36,7 @@ describe('sortByListenersAscending', () => {
     it('should sort artists by monthly listeners in ascending order', () => {
         const sorted = artists.sort(helpers.sortByListenersAscending);
         expect(sorted[0]).toEqual(
-            { rank: 20, name: "Eminem", monthlyListenersInMillions: 47.06, wikiUrl: "https://en.wikipedia.org/wiki/Eminem" }
+            { rank: 20, name: "Eminem", sex: "Male", monthlyListenersInMillions: 47.06, wikiUrl: "https://en.wikipedia.org/wiki/Eminem" }
         );
     })
 });
@@ -45,7 +45,7 @@ describe('sortByListenersDescending', () => {
     it('should sort artists by monthly listeners in descending order', () => {
         const sorted = artists.sort(helpers.sortByListenersDescending);
         expect(sorted[0]).toEqual(
-            { rank: 1, name: "Justin Bieber", monthlyListenersInMillions: 82.27, wikiUrl: "https://en.wikipedia.org/wiki/Justin_Bieber" }
+            { rank: 1, name: "Justin Bieber", sex: "Male", monthlyListenersInMillions: 82.27, wikiUrl: "https://en.wikipedia.org/wiki/Justin_Bieber" }
         );
     })
 });
@@ -54,7 +54,7 @@ describe('sortByRankAscending', () => {
     it('should sort artists by rank in ascending order', () => {
         const sorted = artists.sort(helpers.sortByRankAscending);
         expect(sorted[0]).toEqual(
-            { rank: 1, name: "Justin Bieber", monthlyListenersInMillions: 82.27, wikiUrl: "https://en.wikipedia.org/wiki/Justin_Bieber" }
+            { rank: 1, name: "Justin Bieber", sex: "Male", monthlyListenersInMillions: 82.27, wikiUrl: "https://en.wikipedia.org/wiki/Justin_Bieber" }
         );
     })
 });
@@ -63,7 +63,7 @@ describe('sortByRankDescending', () => {
     it('should sort artists by rank in descending order', () => {
         const sorted = artists.sort(helpers.sortByRankDescending);
         expect(sorted[0]).toEqual(
-            { rank: 20, name: "Eminem", monthlyListenersInMillions: 47.06, wikiUrl: "https://en.wikipedia.org/wiki/Eminem" }
+            { rank: 20, name: "Eminem", sex: "Male", monthlyListenersInMillions: 47.06, wikiUrl: "https://en.wikipedia.org/wiki/Eminem" }
         );
     })
 });
@@ -89,8 +89,8 @@ describe('searchArtist', () => {
     it('should return a list containing artists with "er" in their name', () => {
         const results = helpers.searchArtist("er");
         expect(results).toEqual([
-            { rank: 1, name: "Justin Bieber", monthlyListenersInMillions: 82.27, wikiUrl: "https://en.wikipedia.org/wiki/Justin_Bieber" },
-            { rank: 2, name: "Ed Sheeran", monthlyListenersInMillions: 79.30, wikiUrl: "https://en.wikipedia.org/wiki/Ed_Sheeran" },
+            { rank: 1, name: "Justin Bieber", sex: "Male", monthlyListenersInMillions: 82.27, wikiUrl: "https://en.wikipedia.org/wiki/Justin_Bieber" },
+            { rank: 2, name: "Ed Sheeran", sex: "Male", monthlyListenersInMillions: 79.30, wikiUrl: "https://en.wikipedia.org/wiki/Ed_Sheeran" },
         ]);
     })
 
@@ -129,5 +129,25 @@ describe('searchArtist', () => {
         expect(results).toEqual(sortedArtists);
         expect(results[0]).toEqual(sortedArtists[0]);
         expect(results[results.length - 1]).toEqual(sortedArtists[results.length - 1]);
+    })
+
+    it("should return a list of male artists when the query includes 'male'", () => {
+        const results = helpers.searchArtist("male artists");
+        expect(results).toContainEqual(
+            expect.objectContaining({ rank: 8, name: "Drake", sex: "Male", monthlyListenersInMillions: 58.05, wikiUrl: "https://en.wikipedia.org/wiki/Drake_(musician)" })
+        )
+        expect(results).not.toContainEqual(
+            expect.objectContaining({ rank: 7, name: "Doja Cat", sex: "Female", monthlyListenersInMillions: 59.04, wikiUrl: "https://en.wikipedia.org/wiki/Doja_Cat" })
+        )
+    })
+
+    it("should return a list of female artists when the query includes 'female'", () => {
+        const femaleResults = helpers.searchArtist("female artists");
+        expect(femaleResults).toContainEqual(
+            expect.objectContaining({ rank: 7, name: "Doja Cat", sex: "Female", monthlyListenersInMillions: 59.04, wikiUrl: "https://en.wikipedia.org/wiki/Doja_Cat" })
+        )
+        expect(femaleResults).not.toContainEqual(
+            expect.objectContaining({ rank: 8, name: "Drake", sex: "Male", monthlyListenersInMillions: 58.05, wikiUrl: "https://en.wikipedia.org/wiki/Drake_(musician)" })
+        )
     })
 })
