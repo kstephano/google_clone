@@ -36,19 +36,4 @@ router.get('/:name', (req, res) => {
     }
 });
 
-// Route for retrieving a list of artists that match the query string
-router.get('/query/:query', (req, res) => {
-    const results = helpers.searchArtist(req.params.query);
-    try {
-        if (results != null) {
-            res.status(200).send(results);
-        } else {
-            res.status(400).send({ message: `Couldn't GET artists with search query: ${req.params.query}. No artists' names match the given string.`}); 
-        }
-    } catch(e) {
-        console.log(e);
-        res.status(400).send({ message: `Couldn't GET artists with search query: ${req.params.query}`});
-    }
-});
-
 module.exports = router;
