@@ -28,7 +28,7 @@ describe('API server', () => {
         request(api).get('/artists/Justin Bieber').expect(200, done);
     })
 
-    it('responds to get /artists/er with status 200', (done) => {
+    it('responds to get /artists/query/er with status 200', (done) => {
         request(api).get('/artists/er').expect(200, done);
     })
 })
