@@ -2,7 +2,7 @@ const express = require('express')
 const cors = require('cors');
 
 const app = express()
-const quoteRoute = require('./controllers/artists');
+const quoteRoute = require('./data/artists');
 
 app.use(cors());
 app.use('/artists', quoteRoute);
