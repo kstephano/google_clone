@@ -1,8 +1,7 @@
 const artists = require('../data/artists');
 
 /**
- * 
- * Method to get a random number from a given interval.
+ * Gets a random number from a given interval.
  * 
  * @param {The minimum value to define the lower boundary of the interval} min 
  * @param {The maximum value to define the upper boundary of the interval} max 
@@ -12,6 +11,13 @@ const artists = require('../data/artists');
     return Math.floor(Math.random() * (max - min + 1) + min);
 }
 
+
+/**
+ * Finds an artist using the given name.
+ * 
+ * @param {The name (string) of the artist to retrieve} name 
+ * @returns The artist object that matches the name.
+ */
 function findArtistByName(name) {
     let result = null;
 
@@ -21,17 +27,30 @@ function findArtistByName(name) {
     return result;
 }
 
-// function searchName(queryStr) {
-//     let results = [];
+/**
+ * Search for the artists whose names match the given query string
+ * 
+ * @param {The input from the user to use to search the artists} queryStr 
+ * @returns The list of artists which match the given string. Null if no results were found.
+ */
+function searchArtist(queryStr) {
+    let results = [];
+    let hasResults = false;
 
-//     artists.forEach(artist => {
-//         if (artist.name.includes(queryStr)) results.push(artist);
-//     })
+    artists.forEach(artist => {
+        if (artist.name.toLowerCase().includes(queryStr.toLowerCase())) {
+            console.log(artist);
+            results.push(artist);
+            hasResults = true;
+        }
+    });
 
-
-// }
+    if (hasResults === false) results = null;
+    return results;
+}
 
 module.exports = {
     randomIntFromInterval,
-    findArtistByName
+    findArtistByName,
+    searchArtist
 }
