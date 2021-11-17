@@ -28,7 +28,7 @@ function search(e){
 }
 
 async function fetchQuery() {
-    const response = await fetch(`http://localhost:3000/artists/query${getSearchInput()}`);
+    const response = await fetch(`http://localhost:3000/artists/query/${getSearchInput()}`);
     const data = await response.json();
 
     console.log(data);
@@ -37,7 +37,7 @@ async function fetchQuery() {
 }
 
 function randomSearch(){
-    let luckyText = saveTextInput()
+    let luckyText = getSearchInput()
     console.log(luckyText)
     if (luckyText) {
         if (luckyText.toLowerCase() == "artists") {
