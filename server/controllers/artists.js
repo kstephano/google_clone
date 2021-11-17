@@ -36,7 +36,7 @@ router.get('/:name', (req, res) => {
     }
 })
 
-// ROute for retrieving a list of artists that match the query string
+// Route for retrieving a list of artists that match the query string
 router.get('/:query', (req, res) => {
     try {
         res.status(200).send(helpers.searchArtist(req.params.query));
