@@ -1,3 +1,4 @@
+const { setMaxListeners } = require('superagent');
 const artists = require('../data/artists');
 
 /**
@@ -62,7 +63,14 @@ function searchArtist(queryStr) {
         });
     }
     // set results to null if no results were found
-    if (hasResults === false) results = null;
+    if (hasResults === false) {
+        results = null;
+        // otherwise filter by male/female if appropriate
+    } else if (queryStr.toLowerCase().includes("female" || "woman" || "girl")) {
+        results = results.filter(artist => artist.sex === "Female");
+    } else if (queryStr.toLowerCase().includes("male" || "men" || "guy" || "man")) {
+        results = results.filter(artist => artist.sex === "Male");
+    } 
     return results;
 }
 
