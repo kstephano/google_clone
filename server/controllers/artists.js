@@ -35,3 +35,13 @@ router.get('/:name', (req, res) => {
         res.status(400).send({ message: `Couldn't GET artist with name: ${req.params.name}. Name does not exist in database.` })
     }
 })
+
+// ROute for retrieving a list of artists that match the query string
+router.get('/:query', (req, res) => {
+    try {
+        res.status(200).send(helpers.searchArtist(req.params.query));
+    } catch(e) {
+        console.log(e);
+        res.status(400).send({ message: `Couldn't GET artists with search query: ${req.params.query}. No artists' names match the given string.`});
+    }
+})
