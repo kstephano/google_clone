@@ -56,7 +56,7 @@ describe('searchArtist', () => {
         expect(results).toEqual(null);
     })
 
-    it("should return a list of artists by rank in descending order when given the criteria 'high' 'rank'", () => {
+    it("should return a list of artists by rank in ascending order when given the criteria 'high' 'rank'", () => {
         const results = helpers.searchArtist("highrank");
         const sortedArtists = artists.sort(helpers.sortByListenersDescending);
         expect(results).toEqual(sortedArtists);
@@ -64,15 +64,15 @@ describe('searchArtist', () => {
         expect(results[results.length - 1]).toEqual(sortedArtists[results.length - 1]);
     })
 
-    it("should return a list of artists by rank in ascending order when given the criteria 'low' 'rank'", () => {
+    it("should return a list of artists by rank in descending order when given the criteria 'low' 'rank'", () => {
         const results = helpers.searchArtist("lowrank");
-        const sortedArtists = artists.sort(helpers.sortByRankAscending);
+        const sortedArtists = artists.sort(helpers.sortByRankDescending);
         expect(results).toEqual(sortedArtists);
         expect(results[0]).toEqual(sortedArtists[0]);
         expect(results[results.length - 1]).toEqual(sortedArtists[results.length - 1]);
     })
 
-    it("should return a list of artists by monthly listeners in descending order when given the criteria 'high' 'listen'", () => {
+    it("should return a list of artists by monthly listeners in ascending order when given the criteria 'high' 'listen'", () => {
         const results = helpers.searchArtist("highlisteners");
         const sortedArtists = artists.sort(helpers.sortByListenersDescending)
         expect(results).toEqual(sortedArtists);
@@ -80,7 +80,7 @@ describe('searchArtist', () => {
         expect(results[results.length - 1]).toEqual(sortedArtists[results.length - 1]);
     })
 
-    it("should return a list of artists by monthly listeners in ascending order when given the criteria 'low' 'listen'", () => {
+    it("should return a list of artists by monthly listeners in descending order when given the criteria 'low' 'listen'", () => {
         const results = helpers.searchArtist("lowlisteners");
         const sortedArtists = artists.sort(helpers.sortByListenersAscending)
         expect(results).toEqual(sortedArtists);
