@@ -1,5 +1,13 @@
-const server = require('./app');
-const PORT = process.env.PORT || 3000;
+const express = require('express')
+const cors = require('cors');
 
-// Start the server
-server.listen(PORT, () => console.log(`\nServer departing now from http://localhost:${PORT}!\n`));
+const app = express()
+const artistRoute = require('./controllers/artists');
+
+app.use(cors());
+app.use('/artists', artistRoute);
+
+// Route for retrieve home page message
+app.get('/', (req, res) => res.send('Hello World!'))
+
+module.exports = app;
