@@ -32,8 +32,47 @@ describe('findArtistByName', () => {
     })
 });
 
+describe('sortByListenersAscending', () => {
+    it('should sort artists by monthly listeners in ascending order', () => {
+        const sorted = artists.sort(helpers.sortByListenersAscending);
+        expect(sorted[0]).toEqual(
+            { rank: 20, name: "Eminem", monthlyListenersInMillions: 47.06, wikiUrl: "https://en.wikipedia.org/wiki/Eminem" }
+        );
+    })
+});
+
+describe('sortByListenersDescending', () => {
+    it('should sort artists by monthly listeners in descending order', () => {
+        const sorted = artists.sort(helpers.sortByListenersDescending);
+        expect(sorted[0]).toEqual(
+            { rank: 1, name: "Justin Bieber", monthlyListenersInMillions: 82.27, wikiUrl: "https://en.wikipedia.org/wiki/Justin_Bieber" }
+        );
+    })
+});
+
+describe('sortByRankAscending', () => {
+    it('should sort artists by rank in ascending order', () => {
+        const sorted = artists.sort(helpers.sortByRankAscending);
+        expect(sorted[0]).toEqual(
+            { rank: 1, name: "Justin Bieber", monthlyListenersInMillions: 82.27, wikiUrl: "https://en.wikipedia.org/wiki/Justin_Bieber" }
+        );
+    })
+});
+
+describe('sortByRankDescending', () => {
+    it('should sort artists by rank in descending order', () => {
+        const sorted = artists.sort(helpers.sortByRankDescending);
+        expect(sorted[0]).toEqual(
+            { rank: 20, name: "Eminem", monthlyListenersInMillions: 47.06, wikiUrl: "https://en.wikipedia.org/wiki/Eminem" }
+        );
+    })
+});
+
 describe('searchArtist', () => {
     it('should return a list containing the correct artist given the exact name', () => {
+        // Sort artists array back into original positions to use in test assertions
+        artists.sort(helpers.sortByRankAscending);
+        
         const results = helpers.searchArtist("Justin Bieber");
         expect(results[0]).toEqual(artists[0]);
     })
