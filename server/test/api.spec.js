@@ -29,6 +29,10 @@ describe('API server', () => {
     })
 
     it('responds to get /artists/query/er with status 200', (done) => {
-        request(api).get('/artists/er').expect(200, done);
+        request(api).get('/artists/query/er').expect(200, done);
+    })
+
+    it('reposnds to get /artists/query/ewofjgwh with status 400', (done) => {
+        request(api).get('/artists/query/ewofjgwh').expect(400, done);
     })
 })
