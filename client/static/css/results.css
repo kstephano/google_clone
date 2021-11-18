@@ -79,8 +79,8 @@ button {
 main {
     display: flex;
     flex-direction: row;
-    justify-content: space-around;
     align-items: flex-start;
+    padding-left: 20px;
 }
 
 #number-of-results {
