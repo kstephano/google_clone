@@ -19,8 +19,6 @@ The server has an /artists route as well as a /query/:query endpoint for searchi
 * /:name which retrieves an artist with the given name in json format.
 * /query/:query which is used to search the data and output results depending on the given search criteria. Suitable strings include: "artist", "high"/"low" AND "rank"/"listen", "male"/"female" as well as substrings of a name of an artist in the array. If no suitable criteria is found a status code of 404 is send a long with a message that the search query couldn't retrieve anything.
 
-### Client side functionality
-// TODO
 ## Bugs
 * Client side code is still in-progress.
 * Needs to finish the api call methods in order to retrieve data from the server and display on the webpage.
