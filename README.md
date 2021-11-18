@@ -23,5 +23,4 @@ If the user types 'artists' into the search bar and clicks the Google search but
 If the user types an artist's name and clicks Google search, it returns a results page with all artists with that name. Clicking 'I'm Feeling Lucky' will take you to that artist's Wiki page (if they exist in the database).
 Other options to try in the search bar: 'artistsmale', 'artistsfemale', 'artistshighrank', 'artistslowlisten'.
 ## Bugs
-* Client side code is still in-progress.
 * Needs to finish the api call methods in order to retrieve data from the server and display on the webpage.
