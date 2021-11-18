@@ -29,17 +29,6 @@ function search(e){
     }
 }
 
-// to put inside results.js
-// async function fetchQuery() {
-//     const response = await fetch(`http://localhost:3000/query/${getSearchInput()}`);
-//     const data = await response.json();
-
-//     console.log(data);
-//     // todo
-//     // window.location.href = 'http://127.0.0.1:5500/client/static/html/results.html'
-//     return data;
-// }
-
 function randomSearch(){
     const luckyText = getSearchInput()
 
