@@ -29,14 +29,14 @@ describe('API server', () => {
     })
 
     it('responds to get /artists/query/er with status 200', (done) => {
-        request(api).get('/artists/query/er').expect(200, done);
+        request(api).get('/query/er').expect(200, done);
     })
 
-    it('reposnds to get /artists/query/ewofjgwh with status 400', (done) => {
-        request(api).get('/artists/query/ewofjgwh').expect(400, done);
+    it('reposnds to get /artists/query/ewofjgwh with status 404', (done) => {
+        request(api).get('/query/ewofjgwh').expect(404, done);
     })
 
     it('responds to get /artists/query/artists with status 200', (done) => {
-        request(api).get('/artists/query/artists').expect(200, done);
+        request(api).get('/query/artists').expect(200, done);
     })
 })
