@@ -7,7 +7,7 @@ async function fetchQuery() {
     const data = await response.json();
     addNumberOfResults(data);
     appendArtists(data);
-    appendSpotlight(data[0]);
+//     appendSpotlight(data[0]);
 }
 
 function addNumberOfResults(data){
@@ -38,17 +38,17 @@ function appendArtist(artistData) {
     resultsPage.setAttribute('class', 'result-div')
 }
 
-function appendSpotlight(artist){
-    const spotlight = document.querySelector('#right-main')
-    const spotlightTitle = document.createElement('p')
-    const spotlightImg = document.createElement('img')
-    const spotlightInfo = document.createElement('p')
-    spotlightImg.setAttribute('src', artist.image)
-    spotlightTitle.textContent = `${artist.name}`
-    spotlightInfo.textContent = `They have ${artist.monthlyListenersInMillions} millions listeners monthly.`
-    spotlight.append(spotlightTitle)
-    spotlight.appendChild(spotlightImg)
-    spotlight.append(spotlightInfo)
-}
+// function appendSpotlight(artist){
+//     const spotlight = document.querySelector('#right-main')
+//     const spotlightTitle = document.createElement('p')
+//     const spotlightImg = document.createElement('img')
+//     const spotlightInfo = document.createElement('p')
+//     spotlightImg.setAttribute('src', artist.image)
+//     spotlightTitle.textContent = `${artist.name}`
+//     spotlightInfo.textContent = `They have ${artist.monthlyListenersInMillions} millions listeners monthly.`
+//     spotlight.append(spotlightTitle)
+//     spotlight.appendChild(spotlightImg)
+//     spotlight.append(spotlightInfo)
+// }
 
 fetchQuery();
