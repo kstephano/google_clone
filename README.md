@@ -23,6 +23,3 @@ The server has an /artists route as well as a /query/:query endpoint for searchi
 If the user types 'artists' into the search bar and clicks the Google search button, it returns a results page with all artists in the database. If the user clicks 'I'm Feeling Lucky', it will send you to a random artists' Wiki page.
 If the user types an artist's name and clicks Google search, it returns a results page with all artists with that name. Clicking 'I'm Feeling Lucky' will take you to that artist's Wiki page (if they exist in the database).
 Other options to try in the search bar: 'artistsmale', 'artistsfemale', 'artistshighrank', 'artistslowlisten'.
-
-## Bugs
-* Needs to finish the api call methods in order to retrieve data from the server and display on the webpage.
