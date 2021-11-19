@@ -9,7 +9,7 @@ function getSearchInput () {
 }
 
 function initListeners() {
-    allPagesButton.addEventListener('click', e => search(e));
+    allPagesButton.addEventListener('click', search);
     randomPageButton.addEventListener('click', randomSearch);
 }
 
