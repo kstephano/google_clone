@@ -21,11 +21,8 @@ function search(e){
 
     // if text exists
     if (input) {
-        // fetchQuery();
         localStorage.setItem("query", input);
         window.location.href = './results.html';
-    } else {
-        // do something
     }
 }
 
