@@ -42,17 +42,4 @@ function appendArtist(artistData) {
     resultsPage.setAttribute('class', 'result-div')
 }
 
-// function appendSpotlight(artist){
-//     const spotlight = document.querySelector('#right-main')
-//     const spotlightTitle = document.createElement('p')
-//     const spotlightImg = document.createElement('img')
-//     const spotlightInfo = document.createElement('p')
-//     spotlightImg.setAttribute('src', artist.image)
-//     spotlightTitle.textContent = `${artist.name}`
-//     spotlightInfo.textContent = `They have ${artist.monthlyListenersInMillions} millions listeners monthly.`
-//     spotlight.append(spotlightTitle)
-//     spotlight.appendChild(spotlightImg)
-//     spotlight.append(spotlightInfo)
-// }
-
 fetchQuery();
