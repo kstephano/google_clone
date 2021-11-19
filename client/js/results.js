@@ -5,9 +5,13 @@ const searched = localStorage.getItem("query");
 async function fetchQuery() {
     const response = await fetch(`http://localhost:3000/query/${searched}`);
     const data = await response.json();
-    addNumberOfResults(data);
-    appendArtists(data);
-//     appendSpotlight(data[0]);
+
+    if (data.length != undefined) {
+        addNumberOfResults(data);
+        appendArtists(data);
+    } else {
+        document.querySelector('#number-of-results').textContent = `No results found`;
+    }
 }
 
 function addNumberOfResults(data){
