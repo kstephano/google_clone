@@ -9,7 +9,7 @@ Clone of the Google home page. Data that can be searched in an array of artists 
 
 ## Usage
 ### Dev
-* Run `npm run start` to launch server. The server runs on port 3000. If this is in use, terminate the currect process with npx kill-port 3000, and then re-run the command.
+* Run `npm run start` to launch server. The server runs on port 3000. If this is in use, terminate the currect process with `npx kill-port 3000`, and then re-run the command.
 * Run `npm test` to launch the test suite.
 * Run `npm run coverage` to launch the test for coverage.
 * Right click on the index.html file in the client folder and select Open With Live Server to view the main page.
